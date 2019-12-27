@@ -3,6 +3,8 @@ import PropTypes from 'prop-types';
 import dogShape from '../../helpers/propz/dogShape';
 import Dog from '../Dog/Dog';
 
+import './DogPen.scss';
+
 
 class DogPen extends React.Component {
   static propTypes = {

@@ -9,7 +9,7 @@ const employees = [
     id: 'employee2',
     firstName: 'Bat',
     lastName: 'Man',
-    phoneNumber: '1-800-kick-ass',
+    phoneNumber: '1-800-vigalante',
   },
   {
     id: 'employee3',
@@ -19,4 +19,6 @@ const employees = [
   },
 ];
 
-export default { employees };
+const getAllEmployees = () => employees;
+
+export default { getAllEmployees };
