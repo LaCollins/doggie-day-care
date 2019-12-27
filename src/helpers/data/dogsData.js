@@ -22,4 +22,6 @@ const dogs = [
   },
 ];
 
-export default { dogs };
+const getAllDogs = () => dogs;
+
+export default { getAllDogs };
