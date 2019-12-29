@@ -1,0 +1,17 @@
+{
+"employee1": {
+    "firstName": "Jack",
+    "lastName": "Sparrow",
+    "phoneNumber": "555-695-8593"
+  },
+  "employee2": {
+    "firstName": "Bat",
+    "lastName": "Man",
+    "phoneNumber": "1-800-vigalante"
+  },
+  "employee3": {
+    "firstName": "Jaina",
+    "lastName": "Proudmore",
+    "phoneNumber": "555-111-3333"
+  }
+}
