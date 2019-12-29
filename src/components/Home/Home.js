@@ -53,7 +53,7 @@ class Home extends React.Component {
       <StaffRoom employees={this.state.employees} />
       </div>
       <div className="walksContainer d-flex justify-content-center">
-      <Walks />
+      <Walks walks={this.state.walks} />
       </div>
       </div>
     );
