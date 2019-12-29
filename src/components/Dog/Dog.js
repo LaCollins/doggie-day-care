@@ -1,5 +1,4 @@
 import React from 'react';
-// import PropTypes from 'prop-types';
 import dogShape from '../../helpers/propz/dogShape';
 
 class Dog extends React.Component {
