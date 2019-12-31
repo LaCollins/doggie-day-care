@@ -2,15 +2,25 @@ import React from 'react';
 import walkShape from '../../helpers/propz/walkShape';
 import dogsData from '../../helpers/data/dogsData';
 import employeeData from '../../helpers/data/employeesData';
+import PropTypes from 'prop-types';
 
 class SingleWalk extends React.Component {
   static propTypes = {
     walk: walkShape.walkShape,
+    setEditMode: PropTypes.func,
+    setWalkToEdit: PropTypes.func,
   }
 
   state = {
     dogName: '',
     employeeName: '',
+  }
+
+  setEditMode = (e) => {
+    const {setEditMode, setWalkToEdit, walk } = this.props;
+    e.preventDefault();
+    setEditMode(true);
+    setWalkToEdit(walk);
   }
 
   componentDidMount() {
@@ -50,6 +60,10 @@ class SingleWalk extends React.Component {
         <p className="card-text">{this.state.employeeName}</p>
         <p className="card-text">{walk.date}</p>
       </div>
+      <div className="card-footer d-flex justify-content-around">
+      <button className="btn btn-secondary" onClick={() => {}}>Delete</button>
+      <button className="btn btn-light" onClick={this.setEditMode}>Edit</button>
+    </div>
     </div>
     );
   }
