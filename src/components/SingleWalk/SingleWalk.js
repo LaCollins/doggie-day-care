@@ -7,6 +7,7 @@ class SingleWalk extends React.Component {
     walksWithData: walksWithDataShape.walksWithDataShape,
     setEditMode: PropTypes.func,
     setWalkToEdit: PropTypes.func,
+    deleteWalk: PropTypes.func,
   }
 
   setEditMode = (e) => {
@@ -14,6 +15,12 @@ class SingleWalk extends React.Component {
     e.preventDefault();
     setEditMode(true);
     setWalkToEdit(walk);
+  }
+
+  deleteWalkEvent = (e) => {
+    e.preventDefault();
+    const { deleteWalk, walk } = this.props;
+    deleteWalk(walk.id);
   }
 
 
@@ -28,7 +35,7 @@ class SingleWalk extends React.Component {
         <p className="card-text">{walk.date}</p>
       </div>
       <div className="card-footer d-flex justify-content-around">
-      <button className="btn btn-secondary" onClick={() => {}}>Delete</button>
+      <button className="btn btn-secondary" onClick={this.deleteWalkEvent}>Delete</button>
       <button className="btn btn-light" onClick={this.setEditMode}>Edit</button>
     </div>
     </div>
