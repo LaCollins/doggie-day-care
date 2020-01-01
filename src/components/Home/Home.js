@@ -37,25 +37,30 @@ class Home extends React.Component {
   }
 
 
+
   getWalksWithData = () => {
     let walksWithData = [];
+    let dogs = [];
+    let employees = [];
     walksData.getAllWalks()
     .then((walks) => {
       walksWithData = walks;
+      dogs = this.state.dogs;
+      employees = this.state.employees;
       walksWithData.forEach((walk) => { 
-        dogsData.getDogById(walk.dogId)
-          .then((dog) => {
-            walk.dogName = dog.data.name;
-            walksWithData.forEach((walk) => {
-              employeesData.getEmployeeById(walk.employeeId)
-              .then((employee) => {
-                const employeeName = `${employee.data.firstName} ${employee.data.lastName}`;
-                walk.employeeName = employeeName;
-              })
-            })
-          })
+       dogs.forEach((dog) => {
+         if (dog.id === walk.dogId) {
+           walk.dogName = dog.name;
+         };
       })
-      setTimeout(() => this.setState({ walksWithData }), 500,)
+      employees.forEach((employee) => {
+        if (employee.id === walk.employeeId) {
+          const employeeName = `${employee.firstName} ${employee.lastName}`;
+          walk.employeeName = employeeName;
+        }
+      })
+      })
+      this.setState({ walksWithData });
     })
     .catch((error) => console.error(error));
   }
@@ -76,6 +81,14 @@ class Home extends React.Component {
       .catch((error) => console.error(error));
   }
 
+  deleteWalk = (walkId) => {
+    walksData.deleteWalk(walkId)
+      .then(() => {
+        this.getWalksWithData();
+      })
+      .catch((error) => console.error(error));
+  }
+
 
   render() {
     return (
@@ -85,7 +98,7 @@ class Home extends React.Component {
       <StaffRoom employees={this.state.employees} />
       </div>
       <div className="walksContainer d-flex justify-content-center">
-      <Walks walksWithData={this.state.walksWithData} addWalk={this.addWalk} dogs={this.state.dogs} employees={this.state.employees} updateWalk={this.updateWalk} />
+      <Walks walksWithData={this.state.walksWithData} addWalk={this.addWalk} dogs={this.state.dogs} employees={this.state.employees} updateWalk={this.updateWalk} deleteWalk={this.deleteWalk}/>
       </div>
       </div>
     );

@@ -13,6 +13,7 @@ class Walks extends React.Component {
     dogs: PropTypes.arrayOf(dogShape.dogShape),
     employees: PropTypes.arrayOf(employeeShape.employeeShape),
     updateWalk: PropTypes.func,
+    deleteWalk: PropTypes.func,
   }
 
   state = {
@@ -42,20 +43,27 @@ class Walks extends React.Component {
     this.setState({ showWalkForm: false });
   }
 
-  createWalks = () => {
-    
-  }
-
   render() {
     const myWalks = this.props.walksWithData;
 
-    const walkCards = myWalks.map((walk) => <SingleWalk key={walk.id} walk={walk} setEditMode={this.setEditMode} setWalkToEdit={this.setWalkToEdit} />);
+    const walkCards = myWalks.map((walk) => <SingleWalk key={walk.id} 
+    walk={walk} 
+    setEditMode={this.setEditMode} 
+    setWalkToEdit={this.setWalkToEdit} 
+    deleteWalk={this.props.deleteWalk} />);
 
     return (
       <div>
         <h3>Walks</h3>
         <button className="btn btn-light" onClick={this.setShowWalkForm}>Add Walk</button>
-        { this.state.showWalkForm && <WalkForm addWalk={this.props.addWalk} closeForm={this.closeForm} dogs={this.props.dogs} employees={this.props.employees} editMode={this.state.editMode} walkToEdit={this.state.walkToEdit} closeEditMode={this.closeEditMode} updateWalk={this.props.updateWalk} />}
+        { this.state.showWalkForm && <WalkForm addWalk={this.props.addWalk} 
+        closeForm={this.closeForm} 
+        dogs={this.props.dogs} 
+        employees={this.props.employees} 
+        editMode={this.state.editMode} 
+        walkToEdit={this.state.walkToEdit} 
+        closeEditMode={this.closeEditMode} 
+        updateWalk={this.props.updateWalk} />}
         <div className="walkContainer row d-flex justify-content-center">
           {walkCards}
         </div>
