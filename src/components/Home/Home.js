@@ -37,32 +37,33 @@ class Home extends React.Component {
   }
 
 
-
   getWalksWithData = () => {
     let walksWithData = [];
     let dogs = [];
     let employees = [];
     walksData.getAllWalks()
-    .then((walks) => {
-      walksWithData = walks;
-      dogs = this.state.dogs;
-      employees = this.state.employees;
-      walksWithData.forEach((walk) => { 
-       dogs.forEach((dog) => {
-         if (dog.id === walk.dogId) {
-           walk.dogName = dog.name;
-         };
+      .then((walks) => {
+        walksWithData = walks;
+        dogs = this.state.dogs;
+        employees = this.state.employees;
+        walksWithData.forEach((walk) => {
+          dogs.forEach((dog) => {
+            if (dog.id === walk.dogId) {
+              // eslint-disable-next-line no-param-reassign
+              walk.dogName = dog.name;
+            }
+          });
+          employees.forEach((employee) => {
+            if (employee.id === walk.employeeId) {
+              const employeeName = `${employee.firstName} ${employee.lastName}`;
+              // eslint-disable-next-line no-param-reassign
+              walk.employeeName = employeeName;
+            }
+          });
+        });
+        this.setState({ walksWithData });
       })
-      employees.forEach((employee) => {
-        if (employee.id === walk.employeeId) {
-          const employeeName = `${employee.firstName} ${employee.lastName}`;
-          walk.employeeName = employeeName;
-        }
-      })
-      })
-      this.setState({ walksWithData });
-    })
-    .catch((error) => console.error(error));
+      .catch((error) => console.error(error));
   }
 
   addWalk = (newWalk) => {
