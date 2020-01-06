@@ -13,7 +13,13 @@ This Doggie Day Care app is used to manage walks for dogs by employees. It can b
 
 ## Screenshots
 Display on page load:
-![on load](#)
+![on load](https://github.com/LaCollins/doggie-day-care/raw/master/screenshots/1.PNG)
+Display on Log In:
+![on log in](https://github.com/LaCollins/doggie-day-care/raw/master/screenshots/2.PNG)
+Add a walk:
+![add a walk](https://github.com/LaCollins/doggie-day-care/raw/master/screenshots/3.PNG)
+Edit a walk:
+![edit](https://github.com/LaCollins/doggie-day-care/raw/master/screenshots/4.PNG)
 
 
 
